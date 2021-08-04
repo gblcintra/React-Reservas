@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import { MdFlightTakeoff } from 'react-icons/md'
 
 import api from '../../services/api';
 import './style.scss';
 
 export default function Home() {
+  const dispatch = useDispatch();
  const [trips, setTrips] = useState([]);
 
  useEffect(()=>{
@@ -12,12 +14,18 @@ export default function Home() {
   async function loadApi(){
     const response = await api.get('trips');
     setTrips(response.data);
-    console.log("🚀 ~ file: index.js ~ line 15 ~ loadApi ~ response.data", response.data)
   }
 
   loadApi();
 
  }, []);
+
+function handleAdd(trip){
+  dispatch({
+    type: 'ADD_RESERVE',
+    trip
+  });
+}
 
  return (
    <div>
@@ -30,7 +38,7 @@ export default function Home() {
 
            <button
            type="button"
-           onClick={()=> {}}
+           onClick={()=> handleAdd(trip)}
            >  
              <div>
                <MdFlightTakeoff size={16} color="#FFF" />

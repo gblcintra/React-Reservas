@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import reserva from './reserve/reducer';
+import reserve from './reserve/reducer';
 
 export default combineReducers({
-    reserva,
+    reserve,
 })

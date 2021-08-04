@@ -4,30 +4,29 @@
   align-items: center;
   margin: 15px 0;
   padding: 10px 10px;
-}
+  .logo{
+    max-width: 110px;
+    max-height: 110px;
+  }
+  
+  .reserva{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 
-.logo{
-  max-width: 110px;
-  max-height: 110px;
-}
+    div{
+      text-align: right;
+      margin-right: 10px;
 
-.reserva{
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
+      strong{
+        color: #FFF;
+        display: block;
+      }
 
-.reserva div{
-  text-align: right;
-  margin-right: 10px;
-}
-
-.reserva strong{
-  color: #FFF;
-  display: block;
-}
-
-.reserva span{
-  color: #DDD;
-  font-size: 15px
+      span{
+        color: #DDD;
+        font-size: 15px
+      }
+    }
+  }
 }

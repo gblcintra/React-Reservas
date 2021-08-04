@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { MdFlightTakeoff } from 'react-icons/md'
 
 import api from '../../services/api';
-import './style.css';
+import './style.scss';
 
 export default function Home() {
  const [trips, setTrips] = useState([]);
@@ -12,6 +12,7 @@ export default function Home() {
   async function loadApi(){
     const response = await api.get('trips');
     setTrips(response.data);
+    console.log("🚀 ~ file: index.js ~ line 15 ~ loadApi ~ response.data", response.data)
   }
 
   loadApi();

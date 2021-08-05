@@ -4,6 +4,7 @@ export default function reserve(state = [], action) {
     console.log("🚀 ~ file: reducer.js ~ line 2 ~ reserve ~ state", state)
     switch (action.type) {
         case 'ADD_RESERVE':
+            //draft faz um clone do state
             return produce(state, draft => {
                 const tripIndex = draft.findIndex(trip => trip.id === action.trip.id);
 
@@ -21,8 +22,11 @@ export default function reserve(state = [], action) {
             return produce(state, draft => {
                 const tripIndex = draft.findIndex(trip => trip.id === action.id);
 
+                //Caso o trip tivee mais de 1 na quantidade, remove a quantidade
                 if (draft[tripIndex].amount > 1) {
                     draft[tripIndex].amount -= 1;
+                
+                //senão remove o array
                 }else{
                     draft.splice(tripIndex, 1);
                 }

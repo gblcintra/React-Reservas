@@ -3,10 +3,13 @@
   justify-content: space-between;
   align-items: center;
   margin: 15px 0;
-  padding: 10px 10px;
+  padding: 10px 16px;
+  background-color: white;
+  border-radius: 20px;
   .logo{
     max-width: 110px;
     max-height: 110px;
+    filter: invert(1);
   }
   
   .reserva{
@@ -19,12 +22,14 @@
       margin-right: 10px;
 
       strong{
-        color: #FFF;
+        // color: #FFF;
+        color: #000;
         display: block;
       }
 
       span{
         color: #DDD;
+        color: rgb(51, 51, 51);
         font-size: 15px
       }
     }

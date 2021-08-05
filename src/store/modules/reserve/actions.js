@@ -3,7 +3,6 @@ export function addReserve(trip){
         type: 'ADD_RESERVE',
         trip
       }
-
 }
 
 export function removeReserve(id){
@@ -11,5 +10,11 @@ export function removeReserve(id){
         type: 'REMOVE_RESERVE',
         id
       }
-
+}
+export function updateAmountReserve(id, amount){
+    return {
+        type: 'UPDATE_RESERVE',
+        id, 
+        amount
+      }
 }

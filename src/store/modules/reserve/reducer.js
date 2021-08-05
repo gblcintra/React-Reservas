@@ -18,22 +18,34 @@ export default function reserve(state = [], action) {
                     })
                 }
             });
+
         case 'REMOVE_RESERVE':
             return produce(state, draft => {
                 const tripIndex = draft.findIndex(trip => trip.id === action.id);
 
                 //Caso o trip tivee mais de 1 na quantidade, remove a quantidade
-                if (draft[tripIndex].amount > 1) {
-                    draft[tripIndex].amount -= 1;
-                
-                //senão remove o array
-                }else{
+                if (tripIndex >= 0) {
                     draft.splice(tripIndex, 1);
                 }
             });
 
+        case 'UPDATE_RESERVE':{
+            if(action.amount <=0) return state;
+            
+            return produce(state, draft => {
+                const tripIndex = draft.findIndex(trip => trip.id === action.id);
+
+                //Caso o trip tivee mais de 1 na quantidade, remove a quantidade
+                if (tripIndex >= 0) {
+                    draft[tripIndex].amount = Number(action.amount)
+                } else {
+                    draft.splice(tripIndex, 1);
+                }
+            });
+        }
+
         default:
             return state
     }
-    
+
 }

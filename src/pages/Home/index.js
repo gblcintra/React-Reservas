@@ -21,6 +21,7 @@ export default function Home() {
 
  }, []);
 
+ //Função para adicionar reserva usando o redux
 function handleAdd(trip){
   dispatch(addReserve(trip));
 }

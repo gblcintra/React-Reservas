@@ -1,13 +1,18 @@
 import React, { useCallback }from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdDelete } from 'react-icons/md'
 import './style.scss'
 
 export default function Reservas() {
+  const dispatch = useDispatch()
   const reserves = useSelector(state => state.reserve)
 
-  function handleDelete(){
-    console.log('click Delete')
+  function handleRemove(id){
+    console.log('click Remove', id)
+    dispatch({
+      type: 'REMOVE_RESERVE',
+      id
+    })
   }
   
   return (
@@ -23,7 +28,7 @@ export default function Reservas() {
           <span>Quantidade: {reserve.amount}</span>
           <button
             type="button"
-            onClick={() => handleDelete(reserve.id)}
+            onClick={() => handleRemove(reserve.id)}
           ><MdDelete size={20} color="#000" />
           </button>
         </div>

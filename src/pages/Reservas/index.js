@@ -10,20 +10,17 @@ export default function Reservas() {
 
   //Função para remover a reserva usando o redux
   function handleRemove(id) {
-    console.log('click Remove', id)
     dispatch(removeReserve(id))
   }
 
   //Função para remover a quantidade da reserva usando o redux
   function decrementAmount(trip) {
-    console.log("🚀 ~ file: index.js ~ line 17 ~ decrementAmount ~ trip", trip)
     dispatch(updateAmountReserve( trip.id, trip.amount -1 ))
 
   }
 
   //Função para adiciona a quantidade da reserva usando o redux
   function incrementAmount(trip) {
-    console.log("🚀 ~ file: index.js ~ line 21 ~ incrementAmount ~ trip", trip)
     dispatch(updateAmountReserve(trip.id, trip.amount +1 ))
   }
 

@@ -1,9 +1,10 @@
 import produce from "immer";
 
 export default function reserve(state = [], action) {
-
-
+    
+    
     switch (action.type) {
+        //Carrega as reservas ao carregar a pagina
         case 'LOAD_RESERVE':
             return produce(state, draft => {
                 draft.push({
@@ -11,7 +12,7 @@ export default function reserve(state = [], action) {
                 });
             });
 
-        case 'ADD_RESERVE':
+        case 'ADD_RESERVE_SUCCESS':
             //draft faz um clone do state
             return produce(state, draft => {
                 const tripIndex = draft.findIndex(trip => trip.id === action.trip.id);

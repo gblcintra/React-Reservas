@@ -11,11 +11,14 @@ export default function Header() {
 
   useEffect(() => {
     const reserveLocalStorage = JSON.parse(localStorage.getItem('reserve'));
-    if (reserveLocalStorage) {
-      reserveLocalStorage.map(element => {
-        dispatch(loadReserve(element));
-      });
+    function load() {
+      if (reserveLocalStorage) {
+        reserveLocalStorage.map(element => {
+          dispatch(loadReserve((element)));
+        });
+      }
     }
+    load()
   }, [])
 
   return (

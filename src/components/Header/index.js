@@ -11,10 +11,17 @@ export default function Header() {
   const reserveLocalStorage = JSON.parse(localStorage.getItem('reserve'));
   
   async function load() {
+    console.log("🚀 ~ file: index.js ~ line 15 ~ load ~ reserveLocalStorage", reserveLocalStorage?.length)
     if (reserveLocalStorage) {
-      await reserveLocalStorage.forEach(element => {
-        dispatch(loadReserve((element)));
-      });
+      if(reserveLocalStorage?.length > 0){
+        console.warn(`__Existe ${reserveLocalStorage.length} reservas__`)
+        await reserveLocalStorage.forEach(element => {
+          dispatch(loadReserve((element)));
+        });
+      }else{
+        console.warn('__Existe 1 reserva__')
+        dispatch(loadReserve((reserveLocalStorage)));
+      }
     }
   }
 

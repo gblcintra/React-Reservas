@@ -1,10 +1,25 @@
 
 // Separando de forma mais limpa as Actions solicitadas para as alterações
 
+//load
+export function loadReserve(trip){
+  return {
+    type: 'LOAD_RESERVE',
+    trip,
+  }
+}
+
 //Add reserva
-export function addReserve(trip){
+export function addReserveRequest(id){
     return {
-        type: 'ADD_RESERVE',
+        type: 'ADD_RESERVE_REQUEST',
+        id
+      }
+}
+//Add reserva
+export function addReserveSuccess(trip){
+    return {
+        type: 'ADD_RESERVE_SUCCESS',
         trip
       }
 }

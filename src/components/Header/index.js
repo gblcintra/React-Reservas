@@ -8,16 +8,17 @@ import './style.scss'
 export default function Header() {
   const reserveSize = useSelector(state => state.reserve.length)
   const dispatch = useDispatch();
+  const reserveLocalStorage = JSON.parse(localStorage.getItem('reserve'));
+  
+  async function load() {
+    if (reserveLocalStorage) {
+      await reserveLocalStorage.forEach(element => {
+        dispatch(loadReserve((element)));
+      });
+    }
+  }
 
   useEffect(() => {
-    const reserveLocalStorage = JSON.parse(localStorage.getItem('reserve'));
-    function load() {
-      if (reserveLocalStorage) {
-        reserveLocalStorage.map(element => {
-          dispatch(loadReserve((element)));
-        });
-      }
-    }
     load()
   }, [])
 

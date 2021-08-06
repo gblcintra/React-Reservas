@@ -1,8 +1,8 @@
 import produce from "immer";
 
 export default function reserve(state = [], action) {
-    
-    
+
+
     switch (action.type) {
         //Carrega as reservas ao carregar a pagina
         case 'LOAD_RESERVE':
@@ -15,18 +15,7 @@ export default function reserve(state = [], action) {
         case 'ADD_RESERVE_SUCCESS':
             //draft faz um clone do state
             return produce(state, draft => {
-                const tripIndex = draft.findIndex(trip => trip.id === action.trip.id);
-
-                if (tripIndex >= 0) {
-                    draft[tripIndex].amount += 1;
-                } else {
-                    draft.push({
-                        ...action.trip,
-                        amount: 1
-                    });
-                };
-                localStorage.setItem('reserve', JSON.stringify(draft));
-
+                draft.push(action.trip);
             });
 
         case 'REMOVE_RESERVE':

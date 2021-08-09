@@ -1,6 +1,7 @@
 import { select, call, put, all, takeLatest } from 'redux-saga/effects';
 import { addReserveSuccess, updateAmountSuccess } from './actions';
 import api from '../../../services/api'
+import history from '../../../services/history'
 //Middleware
 function* addToReserve({ id }) {
     const tripExists = yield select(
@@ -55,6 +56,8 @@ function* updateAmount({ id, amount }) {
     }
 
     yield put(updateAmountSuccess(id, amount));
+    //navega somente quando a requisiçao estiver completa
+    history.push('/reservas')
 
 }
 

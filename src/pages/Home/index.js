@@ -6,7 +6,8 @@ import { MdFlightTakeoff } from 'react-icons/md'
 import api from '../../services/api';
 import './style.scss';
 
-export default function Home() {
+//passando history que [e uma prop padrão
+export default function Home( {history} ) {
   const dispatch = useDispatch();
   const [trips, setTrips] = useState([]);
 

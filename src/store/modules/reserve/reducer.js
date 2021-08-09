@@ -27,9 +27,11 @@ export default function reserve(state = [], action) {
                 };
             });
 
-        case 'UPDATE_RESERVE': {
+        case 'UPDATE_RESERVE_SUCCESS': {
             // caso tenha s[o 1 na quantidade ele retorna o state
-            if (action.amount <= 0) return state;
+            if (action.amount <= 0){
+                localStorage.setItem('reserve', JSON.stringify(state));
+            } 
 
             return produce(state, draft => {
                 const tripIndex = draft.findIndex(trip => trip.id === action.id);
